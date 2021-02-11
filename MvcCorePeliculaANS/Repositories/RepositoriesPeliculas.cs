@@ -65,6 +65,21 @@ namespace MvcCorePeliculaANS.Repositories
             return pelisbyGnero;
         }
 
+        public List<VistaPeli> PaginarPelisByGenero(int posicion,int idGenero, ref int registro)
+        {
+            String sql= "PaginarPeliculas @posicion, @registro out,@idGenero";
+            SqlParameter pmPoscion = new SqlParameter("@posicion", posicion);
+            SqlParameter pmidGenero = new SqlParameter("@idGenero", idGenero);
+            SqlParameter pmRegister = new SqlParameter("@idGenero", 0);
+
+            pmRegister.Direction = System.Data.ParameterDirection.Output;
+
+            List<VistaPeli> pelisbyGnero = this.context.VistaPeliculas.FromSqlRaw(sql,pmPoscion,pmRegister,pmidGenero).ToList();
+            registro = Convert.ToInt32(pmRegister.Value);
+
+            return pelisbyGnero;
+        }
+
         public Peliculas PeliculaDetails(int idPelicula)
         {
             var consulta = from datos in this.context.Peliculas

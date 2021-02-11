@@ -25,7 +25,8 @@ namespace MvcCorePeliculaANS.Controllers
 
         public IActionResult PeliculasGeneros(int idGenero)
         {
-            List<VistaPeli> pelicuasByGenero = this.repo.GetPeliculasByGenero(idGenero);
+           List<VistaPeli> pelicuasByGenero = this.repo.GetPeliculasByGenero(idGenero);
+
             return View(pelicuasByGenero);
         }
 

@@ -12,6 +12,8 @@ namespace MvcCorePeliculaANS.Repositories
 
         List<VistaPeli> GetPeliculasByGenero(int idGenero);
 
+        List<VistaPeli> PaginarPelisByGenero(int posicion,int idGenero, ref int registro);
+
         List<VistaPeli> GetAllPelis();
 
         Peliculas PeliculaDetails(int idPelicula);
