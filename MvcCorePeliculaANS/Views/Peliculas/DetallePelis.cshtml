@@ -1,0 +1,44 @@
+﻿@model Peliculas
+@{ 
+    String url = "https://www.youtube.com/embed/" + @Model.Youtube;
+
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th colspan="6">@Model.Titulo</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td colspan="2" rowspan="2"><img src="~/CARTELES/@Model.Foto" style="width:250px"/></td>
+            <td>Actores</td>
+            <td colspan="2">@Model.Actores</td>
+           
+        </tr>
+        <tr>
+            <td>Argumento</td>
+            <td>@Model.Argumento</td>
+        </tr>
+    
+        <tr>
+            <td colspan="6"><iframe src="@url" width="800" height="400"></iframe></td>
+        </tr>
+        <tr>
+        <td><a asp-controller="Peliculas" asp-action="PeliculasGeneros"
+                       asp-route-idGenero="@Model.IdGenero">Volver</a> </td>
+        <td>
+            <form method="post">
+                <input type="hidden" name="idPelicula" value="@Model.IdPelicula" />
+                <input type="hidden" name="titulo" value="@Model.Titulo" />
+                <input type="hidden" name="precio" value="@Model.Precio" />
+                <input type="hidden" name="imagen" value="@Model.Foto" />
+                <input type="hidden" name="idGenero" value="@Model.IdGenero" />
+                <button class="btn-info" type="submit">Comprar</button>
+            </form>
+        </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+﻿@model List<Genero>
+
+<div style="position:absolute; left:auto">
+    <div>
+        <h5 style="background-color:darkcyan; color:white">Generos:</h5>
+        <ul>
+            @foreach (Genero genero in Model)
+            {
+                <li>
+                    <a asp-controller="Peliculas" asp-action="PeliculasGeneros"
+                       asp-route-idGenero="@genero.IdGenero">@genero.GeneroName</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div>
+        <h5 style="background-color:darkcyan; color:white">Compras: @ViewData["Cantidad"]</h5>
+        <a asp-controller="Peliculas" asp-action="PagarPeliculas">Finalizar compra</a>
+    </div>
+</div>
+
+

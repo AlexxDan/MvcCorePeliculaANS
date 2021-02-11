@@ -1,0 +1,26 @@
+﻿@model List<VistaPeli>
+    <h3 style="background-color:darkcyan; color:white">Peliculas</h3>
+<table class="table table-bordered" >
+    <thead>
+        <tr>
+            <th>CARTEL</th>
+            <th>TITULO</th>
+            <th>PRECIO</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(VistaPeli peli in Model)
+        {
+            <tr>
+               
+                <td> <a asp-action="DetallePelis" asp-controller="Peliculas"
+                        asp-route-idPelicula="@peli.IdPelicula">
+                    <img src="~/CARTELES/@peli.Foto" style="width:200px;" /></a></td>
+                    <td>@peli.Titulo</td>
+                    <td>@peli.Precio</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
